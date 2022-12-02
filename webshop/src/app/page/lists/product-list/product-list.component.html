@@ -1,5 +1,16 @@
 <div class="container col-12">
-  <thead>
-    <tr><th *ngfor="let head of productHeaders"></th></tr>
-  </thead>
+  <table>
+    <thead>
+      <tr>
+        <th *ngfor="let head in headers | async">
+          {{ head }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of product$ | async">
+        <td>{{ prod.id }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
