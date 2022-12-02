@@ -8,8 +8,8 @@ export class Product {
   catId?: Category = new Category();
   description: string = '';
   price: number = 0;
-  featured: boolean = false;
-  active: boolean = false;
+  featured: boolean = true;
+  active: boolean = true;
 }
 
 export const productHeaders: string[] = [
