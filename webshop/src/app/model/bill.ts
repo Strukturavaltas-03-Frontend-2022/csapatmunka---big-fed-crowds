@@ -7,3 +7,4 @@ export class Bill {
   status: string[] = [];
 }
 
+export const billHeaders: string[] = ['id', 'orderID', 'amount', 'status'];

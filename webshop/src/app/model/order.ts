@@ -9,3 +9,11 @@ export class Order {
   amount: number = 0;
   shipped: string[] = [];
 }
+
+export const orderHeaders: string[] = [
+  'id',
+  'customerId',
+  'productId',
+  'amount',
+  'status',
+];
