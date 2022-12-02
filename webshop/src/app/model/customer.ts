@@ -9,3 +9,12 @@ export class Customer {
   address: Address = new Address();
   active: boolean = false;
 }
+
+export const cutomerHeaders: string[] = [
+  'id',
+  'fisrtName',
+  'lastName',
+  'email',
+  'address',
+  'active',
+];
