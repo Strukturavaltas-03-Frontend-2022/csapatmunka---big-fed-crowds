@@ -5,6 +5,10 @@ import { ProductListComponent } from './page/lists/product-list/product-list.com
 import { CustomerListComponent } from './page/lists/customer-list/customer-list.component';
 import { OrderListComponent } from './page/lists/order-list/order-list.component';
 import { BillListComponent } from './page/lists/bill-list/bill-list.component';
+import { EditCustomerComponent } from './page/editors/edit-customer/edit-customer.component';
+import { EditOrderComponent } from './page/editors/edit-order/edit-order.component';
+import { EditBillComponent } from './page/editors/edit-bill/edit-bill.component';
+import { EditProductComponent } from './page/editors/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -16,16 +20,33 @@ const routes: Routes = [
     component: ProductListComponent,
   },
   {
+    path: 'edit-product',
+    component: EditProductComponent,
+  },
+  {
     path: 'customers',
     component: CustomerListComponent,
+  },
+
+  {
+    path: 'edit-customer',
+    component: EditCustomerComponent,
   },
   {
     path: 'orders',
     component: OrderListComponent,
   },
   {
+    path: 'edit-order',
+    component: EditOrderComponent
+  },
+  {
     path: 'bills',
     component: BillListComponent,
+  },
+  {
+    path: 'edit-bill',
+    component: EditBillComponent
   },
 ];
 
