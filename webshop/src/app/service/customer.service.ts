@@ -17,4 +17,21 @@ export class CustomerService {
   getAll(): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.apiUrl}${this.entity}`)
   }
+
+ create(customer: Customer): Observable<Customer>{
+    return this.http.post<Customer>(
+    `${this.apiUrl}${this.entity}`,
+    customer)
+    }
+
+ update(customer: Customer): Observable<Customer>{
+    return this.http.patch<Customer>(
+    `${this.apiUrl}${this.entity}/${customer.id}`,
+    customer)
+    }
+
+ delete(customer: Customer): Observable<Customer>{
+    return this.http.delete<Customer>(`${this.apiUrl}${this.entity}/${customer.id}`)
+    }
+
 }
