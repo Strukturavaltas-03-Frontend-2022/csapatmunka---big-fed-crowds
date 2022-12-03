@@ -1,15 +1,19 @@
 <h1>Customers List</h1>
 
-<button class="btn btn-success col-12" routerLink="/edit-customer"> + New Customer </button>
+<button class="btn btn-success col-12" [routerLink]="['/edit-customer', 0]"> + New Customer </button>
 
 <div class="row">
   <div *ngIf="customerList$ | async as customerList" class="col-12">
     <app-data-table
     [listers]="customerList"
     [columns]="columns"
+
+    (onDelete)="onDelete($event)"
     >
     </app-data-table>
   </div>
 </div>
 
 <!-- {{customerList$ | async | json}} -->
+
+<!-- (onEdit)="onEdit($event)" -->
