@@ -16,8 +16,13 @@ export class DataTableComponent<T extends { [x: string]: any }> implements OnIni
   @Input() listers: T[] = [];
   @Input() columns: ITableCol[] = [];
 
+  sortKey: string = '';
+  sortDirection: number = 1;
+
   @Output() onEdit: EventEmitter<T> = new EventEmitter();
   @Output() onDelete: EventEmitter<T> = new EventEmitter();
+
+
 
   ngOnInit(): void {
   }
@@ -28,5 +33,15 @@ export class DataTableComponent<T extends { [x: string]: any }> implements OnIni
 
   raiseDelete(row:T): void {
     this.onDelete.emit(row);
+  }
+
+  startSort(key: string): void {
+    if (key === this.sortKey) {
+      this.sortDirection *= -1
+    } else {
+      this.sortDirection = 1
+    }
+
+    this.sortKey = key
   }
 }

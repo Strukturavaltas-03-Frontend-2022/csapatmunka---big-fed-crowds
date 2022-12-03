@@ -3,15 +3,26 @@
     <table class="table">
       <thead>
         <tr>
-          <th *ngFor="let column of columns">
+          <th
+            (click)="startSort(column.key)"
+            *ngFor="let column of columns "
+          >
+            <i
+              *ngIf="column.key === sortKey && sortDirection === -1"
+              class="fa fa-sort-amount-desc"
+            ></i>
             {{ column.title }}
+            <i
+              *ngIf="column.key === sortKey && sortDirection === 1"
+              class="fa fa-sort-amount-asc"
+            ></i>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of listers">
+        <tr *ngFor="let row of listers | sorter : sortKey : sortDirection">
           <td *ngFor="let column of columns">
-            {{ row[column.key]}}
+            {{ row[column.key] }}
           </td>
           <td>
             <div (click)="raiseEdit(row)" class="btn-group">
