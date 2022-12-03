@@ -1,20 +1,11 @@
 <div class="row">
-  <div class="col-12">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngfor="let prod of product$ | async">
-          <td >{{ prod.name }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <pre>{{ productList$ | async |json}}</pre>
+  <div *ngIf="productList$ | async as productList" class="col-12">
+    <app-data-table
+    [listers]="productList"
+    [columns]="columns">
+    </app-data-table>
   </div>
 </div>
-<pre>{{ productHeaders | json}}</pre>
-<pre>{{product$ | async | json}}</pre>
+
+<!-- <pre>{{productList$ | async | json}}</pre> -->
