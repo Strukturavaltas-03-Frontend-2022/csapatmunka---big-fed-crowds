@@ -18,6 +18,10 @@ export class CustomerService {
     return this.http.get<Customer[]>(`${this.apiUrl}${this.entity}`)
   }
 
+  get(id: number): Observable<Customer>{
+    return this.http.get<Customer>(`${this.apiUrl}${this.entity}/${id}`)
+  }
+
  create(customer: Customer): Observable<Customer>{
     return this.http.post<Customer>(
     `${this.apiUrl}${this.entity}`,
