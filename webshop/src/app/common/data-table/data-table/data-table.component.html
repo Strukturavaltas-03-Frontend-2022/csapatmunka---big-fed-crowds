@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns">
+            {{ column.title }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of listers">
+          <td *ngFor="let column of columns">
+            {{ row[column.key]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

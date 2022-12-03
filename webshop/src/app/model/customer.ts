@@ -10,7 +10,7 @@ export class Customer {
   active: boolean = false;
 }
 
-export const cutomerHeaders: string[] = [
+export const customerHeaders: string[] = [
   'id',
   'fisrtName',
   'lastName',
