@@ -10,10 +10,10 @@ export class Order {
   shipped: string[] = [];
 }
 
-export const orderHeaders: string[] = [
-  'id',
-  'customerId',
-  'productId',
-  'amount',
-  'status',
-];
+// export const orderHeaders: string[] = [
+//   'id',
+//   'customerId',
+//   'productId',
+//   'amount',
+//   'status',
+// ];
