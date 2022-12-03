@@ -1,8 +1,13 @@
+<h1>Customers List</h1>
+
+<button class="btn btn-success col-12" routerLink="/edit-customer"> + New Customer </button>
+
 <div class="row">
   <div *ngIf="customerList$ | async as customerList" class="col-12">
     <app-data-table
     [listers]="customerList"
-    [columns]="columns">
+    [columns]="columns"
+    >
     </app-data-table>
   </div>
 </div>

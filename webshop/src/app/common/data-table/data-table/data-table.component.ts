@@ -19,6 +19,8 @@ export class DataTableComponent<T extends { [x: string]: any }> implements OnIni
   sortKey: string = '';
   sortDirection: number = 1;
 
+  page: number = 1;
+
   @Output() onEdit: EventEmitter<T> = new EventEmitter();
   @Output() onDelete: EventEmitter<T> = new EventEmitter();
 
