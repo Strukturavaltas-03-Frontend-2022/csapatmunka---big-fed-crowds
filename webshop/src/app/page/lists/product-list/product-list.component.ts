@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/service/product.service';
 import { Observable } from 'rxjs';
 import { ConfigService } from 'src/app/service/config.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -19,7 +20,8 @@ export class ProductListComponent {
   constructor(
     private productService: ProductService,
     private configService: ConfigService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   //productList$ = combineLatest({
@@ -34,12 +36,16 @@ export class ProductListComponent {
   //  )
   //);
 
+onEdit(product: Product): void {
+  this.router.navigate([`/edit-product`, product.id])
+}
+
+
   onDelete(product: Product): void {
     this.productService
       .delete(product)
       .subscribe(() => (this.productList$ = this.productService.getAll()));
     this.toastr.warning('Product is deleted!', 'WARNING!');
-  console.log(product.id);
   }
 }
 

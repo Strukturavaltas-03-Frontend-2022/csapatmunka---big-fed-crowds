@@ -15,7 +15,7 @@
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
 
-    <p style="color:red ;">All category must be filled!</p>
+    <p  [hidden]="eventForm.pristine" style="color:red ;" >All category must be filled!</p>
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, customer)">
       <div class="form-group mb-2 mt-2">
         <label for="" class="mb-2">Customer ID</label>
@@ -39,6 +39,7 @@
         />
         <div
           [hidden]="eventForm.controls['firstName']?.valid"
+          [hidden]="eventForm.controls['firstName']?.pristine"
           class="error-message"
         >
           Fistname must be filled with capital letter, maximum 50 characters long.
@@ -56,6 +57,7 @@
         />
         <div
           [hidden]="eventForm.controls['lastName']?.valid"
+          [hidden]="eventForm.controls['lastName']?.pristine"
           class="error-message"
         >
           Lastname must be filled with capital letters, maximum 50 characters long.
@@ -73,6 +75,7 @@
         />
         <div
           [hidden]="eventForm.controls['email']?.valid"
+          [hidden]="eventForm.controls['email']?.pristine"
           class="error-message"
         >
           Email address must be added!
@@ -90,6 +93,7 @@
         />
         <div
           [hidden]="eventForm.controls['address']?.valid"
+          [hidden]="eventForm.controls['address']?.pristine"
           class="error-message"
         >
           Address must be filled with capital letters, maximum 3 nametag.
