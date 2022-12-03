@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -19,8 +21,7 @@ import { EditOrderComponent } from './page/editors/edit-order/edit-order.compone
 import { EditBillComponent } from './page/editors/edit-bill/edit-bill.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DataTableComponent } from './common/data-table/data-table/data-table.component';
 
 @NgModule({
