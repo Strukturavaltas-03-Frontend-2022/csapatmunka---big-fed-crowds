@@ -4,6 +4,7 @@ import { Customer } from 'src/app/model/customer';
 import { ConfigService } from 'src/app/service/config.service';
 import { CustomerService } from 'src/app/service/customer.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -18,12 +19,15 @@ export class CustomerListComponent {
   constructor(
     private customerService: CustomerService,
     private configService: ConfigService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
-  onEdit() {
+  onEdit(customer: Customer):void {
+    this.router.navigate(['/edit-customer', customer.id])
 
   }
+
   onDelete(customer: Customer):void {
     this.customerService.delete( customer).subscribe(
       () => this.customerList$ = this.customerService.getAll(),

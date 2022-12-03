@@ -7,13 +7,10 @@
     <app-data-table
     [listers]="customerList"
     [columns]="columns"
-
+    (onEdit)="onEdit($event)"
     (onDelete)="onDelete($event)"
     >
     </app-data-table>
   </div>
 </div>
 
-<!-- {{customerList$ | async | json}} -->
-
-<!-- (onEdit)="onEdit($event)" -->
