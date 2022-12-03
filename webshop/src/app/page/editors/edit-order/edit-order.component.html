@@ -1,1 +1,106 @@
-<p>edit-order works!</p>
+<!-- export class Order {
+  [x: string]: any;
+  id: number = 0;
+  customerID: Customer = new Customer();
+  prouctID: Product = new Product();
+  amount: number = 0;
+  shipped: string[] = [];
+} -->
+
+
+<div class="row pt-5">
+  <div *ngIf="order$ | async as order"  class="col-6 offset-3">
+    <h1 class="mt-5 text-center" >Order Editor</h1>
+    <hr class="mx-auto" style="width: 50%" />
+    <hr class="mx-auto mb-5" style="width: 20%" />
+
+    <p style="color:red ;">All category must be filled!</p>
+    <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, order)">
+      <div class="form-group mb-2 mt-2">
+        <label for="" class="mb-2">Order ID</label>
+        <input
+          name="id"
+          [(ngModel)]="order.id"
+          type="number"
+          class="form-control"
+          readonly
+        />
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Customer ID</label>
+        <input
+          name="customerID"
+          [(ngModel)]="order.customerID"
+          type="number"
+          class="form-control"
+          pattern="[1-9].{0,6}"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['customerID']?.valid"
+          class="error-message"
+        >
+          Customer ID must be number.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Product ID</label>
+        <input
+          name="productID"
+          [(ngModel)]="order.productID"
+          type="number"
+          class="form-control"
+          pattern="[1-9].{0,6}"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['productID']?.valid"
+          class="error-message"
+        >
+        Product ID must be number.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Amount</label>
+        <input
+          name="amount"
+          [(ngModel)]="order.amount"
+          type="number"
+          class="form-control"
+          pattern="[1-9].{0,6}"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['amount']?.valid"
+          class="error-message"
+        >
+          Amount must be number!
+        </div>
+      </div>
+ <div class="form-group mb-2">
+        <label for="" class="mb-2">Shipped</label>
+        <select
+          name="shipped"
+          [(ngModel)]="order.status"
+          type="select"
+          class="form-select"
+          required
+        >
+          <option selected>{{order.status}}</option>
+          <option value="1">new</option>
+          <option value="2">paid</option>
+          <option value="3">shipped</option>
+        </select>
+      </div>
+      <button
+      (click)="showToaster()"
+      [disabled]="eventForm.invalid"
+        type="submit"
+        class="btn btn-warning btn-lg mt-2"
+      >
+        <i class="fa fa-save"> SAVE</i>
+      </button>
+    </form>
+  </div>
+</div>
+

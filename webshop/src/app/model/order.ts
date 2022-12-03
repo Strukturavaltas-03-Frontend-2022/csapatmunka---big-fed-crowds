@@ -5,9 +5,9 @@ export class Order {
   [x: string]: any;
   id: number = 0;
   customerID: Customer = new Customer();
-  prouctID: Product = new Product();
+  productID: Product = new Product();
   amount: number = 0;
-  shipped: string[] = [];
+  status: string='';
 }
 
 // export const orderHeaders: string[] = [
