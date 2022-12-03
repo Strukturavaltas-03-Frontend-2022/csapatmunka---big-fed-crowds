@@ -20,7 +20,7 @@ const routes: Routes = [
     component: ProductListComponent,
   },
   {
-    path: 'edit-product',
+    path: 'edit-product/:id',
     component: EditProductComponent,
   },
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'edit-customer',
+    path: 'edit-customer/:id',
     component: EditCustomerComponent,
   },
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
     component: OrderListComponent,
   },
   {
-    path: 'edit-order',
+    path: 'edit-order/:id',
     component: EditOrderComponent
   },
   {
@@ -45,7 +45,7 @@ const routes: Routes = [
     component: BillListComponent,
   },
   {
-    path: 'edit-bill',
+    path: 'edit-bill/:id',
     component: EditBillComponent
   },
 ];

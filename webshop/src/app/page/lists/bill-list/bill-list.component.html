@@ -1,1 +1,14 @@
-<p>bill-list works!</p>
+<h1>Bills List</h1>
+
+<button class="btn btn-success col-12" routerLink="/edit-bill"> + New Bill </button>
+
+<div class="row">
+  <div *ngIf="billList$ | async as billList" class="col-12">
+    <app-data-table
+    [listers]="billList"
+    [columns]="columns"
+    >
+    </app-data-table>
+  </div>
+</div>
+
