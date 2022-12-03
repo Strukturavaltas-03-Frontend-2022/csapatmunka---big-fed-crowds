@@ -32,6 +32,6 @@ export class CustomerService {
 
  delete(customer: Customer): Observable<Customer>{
     return this.http.delete<Customer>(`${this.apiUrl}${this.entity}/${customer.id}`)
-    }
+  }
 
 }
