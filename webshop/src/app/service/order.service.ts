@@ -18,6 +18,10 @@ export class OrderService {
     return this.http.get<Order[]>(`${this.apiUrl}${this.entity}`)
   }
 
+  get(id: number): Observable<Order>{
+    return this.http.get<Order>(`${this.apiUrl}${this.entity}/${id}`)
+  }
+
  create(order: Order): Observable<Order>{
     return this.http.post<Order>(
     `${this.apiUrl}${this.entity}`,

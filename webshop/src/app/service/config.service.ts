@@ -40,9 +40,9 @@ export class ConfigService {
   orderTableColumns: ITableColumn[] = [
     { title: 'ID', key: 'id' },
     { title: 'Customer ID', key: 'customerID' },
-    { title: 'Product ID', key: 'prouctID' },
+    { title: 'Product ID', key: 'productID' },
     { title: 'Amount', key: 'amount' },
-    { title: 'Shipped', key: 'shipped' },
+    { title: 'Status', key: 'status' },
   ];
 
 
