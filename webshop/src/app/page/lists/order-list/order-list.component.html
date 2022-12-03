@@ -1,1 +1,17 @@
-<p>order-list works!</p>
+<h1>Orders List</h1>
+
+<button class="btn btn-success col-12" routerLink="/edit-order"> + New Order </button>
+
+<div class="row">
+  <div *ngIf="orderList$ | async as orderList" class="col-12">
+    <app-data-table
+    [listers]="orderList"
+    [columns]="columns"
+    >
+    </app-data-table>
+  </div>
+</div>
+
+
+
+ <!-- {{orderList$ | async | json}} -->
