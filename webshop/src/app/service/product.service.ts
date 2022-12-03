@@ -1,7 +1,7 @@
-import { environment } from './../../environments/environment';
-import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
 
 
@@ -9,14 +9,29 @@ import { Product } from '../model/product';
   providedIn: 'root',
 })
 export class ProductService {
+
   apiUrl: string = environment.apiUrl;
   entity: string = 'product';
 
-  constructor(public http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}${this.entity}`);
   }
 
-  ngOnInit(): void {}
+  create(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.apiUrl}${this.entity}`, product);
+  }
+
+  update(product: Product): Observable<Product> {
+    return this.http.patch<Product>(
+      `${this.apiUrl}${this.entity}/${product.id}`,
+      Product
+    );
+  }
+
+delete(product: Product): Observable<Product> {
+  return this.http.delete<Product>(`${this.apiUrl}${this.entity}/${product.id}`)
+}
+
 }
