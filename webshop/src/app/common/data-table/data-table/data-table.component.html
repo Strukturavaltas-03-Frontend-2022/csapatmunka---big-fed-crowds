@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of listers | sorter : sortKey : sortDirection">
+        <tr *ngFor="let row of listers | sorter : sortKey : sortDirection | paginate: { itemsPerPage: 15, currentPage: page }">
           <td *ngFor="let column of columns">
             {{ row[column.key] }}
           </td>
@@ -38,4 +38,5 @@
       </tbody>
     </table>
   </div>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
