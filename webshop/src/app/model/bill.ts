@@ -4,7 +4,7 @@ export class Bill {
   id: number = 0;
   orderID: Order = new Order();
   amount: number = 0;
-  status: string[] = [];
+  status: string = '';
 }
 
 export const billHeaders: string[] = ['id', 'orderID', 'amount', 'status'];

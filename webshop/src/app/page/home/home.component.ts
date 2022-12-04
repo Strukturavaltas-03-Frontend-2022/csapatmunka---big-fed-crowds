@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Bill } from 'src/app/model/bill';
 import { Customer } from 'src/app/model/customer';
 import { Order } from 'src/app/model/order';
 import { Product } from 'src/app/model/product';
@@ -19,6 +20,8 @@ export class HomeComponent implements OnInit {
   activeProducts: Product[] = [];
 
   pendingOrders: Order[] = [];
+
+  billList: Bill[] = [];
 
   constructor(
     private customerService: CustomerService,
