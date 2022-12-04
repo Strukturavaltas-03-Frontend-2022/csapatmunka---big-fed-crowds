@@ -8,14 +8,15 @@
   active: boolean = false;
 } -->
 
-
 <div class="row pt-5">
-  <div *ngIf="customer$ | async as customer"  class="col-6 offset-3">
-    <h1 class="mt-5 text-center" >Customer Editor</h1>
+  <div *ngIf="customer$ | async as customer" class="col-6 offset-3">
+    <h1 class="mt-5 text-center">Customer Editor</h1>
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
 
-    <p  [hidden]="eventForm.pristine" style="color:red ;" >All category must be filled!</p>
+    <p [hidden]="eventForm.pristine" style="color: red">
+      All category must be filled!
+    </p>
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, customer)">
       <div class="form-group mb-2 mt-2">
         <label for="" class="mb-2">Customer ID</label>
@@ -42,7 +43,8 @@
           [hidden]="eventForm.controls['firstName']?.pristine"
           class="error-message"
         >
-          Fistname must be filled with capital letter, maximum 50 characters long.
+          Fistname must be filled with capital letter, maximum 50 characters
+          long.
         </div>
       </div>
       <div class="form-group mb-2">
@@ -60,7 +62,8 @@
           [hidden]="eventForm.controls['lastName']?.pristine"
           class="error-message"
         >
-          Lastname must be filled with capital letters, maximum 50 characters long.
+          Lastname must be filled with capital letters, maximum 50 characters
+          long.
         </div>
       </div>
       <div class="form-group mb-2">
@@ -81,7 +84,7 @@
           Email address must be added!
         </div>
       </div>
-      <div class="form-group mb-2">
+      <div class="form-group mb-3">
         <label for="" class="mb-2">Address</label>
         <input
           name="address"
@@ -99,7 +102,7 @@
           Address must be filled with capital letters, maximum 3 nametag.
         </div>
       </div>
-<div class="form-group mb-2">
+      <!-- <div class="form-group mb-2">
         <label for="" class="mb-2">Active</label>
         <select
           name="active"
@@ -112,16 +115,26 @@
           <option value="true">true</option>
           <option value="false">false</option>
         </select>
+      </div> -->
+
+      <div class="form-check mb-2">
+        <label for="" class="form-check-label me-2">Active</label>
+        <input
+          name="active"
+          [(ngModel)]="customer.active"
+          type="checkbox"
+          class="form-check-input"
+        />
       </div>
+
       <button
-      (click)="showToaster()"
-      [disabled]="eventForm.invalid"
+        (click)="showToaster()"
+        [disabled]="eventForm.invalid"
         type="submit"
-        class="btn btn-warning btn-lg mt-2"
+        class="btn btn-secondary btn-lg mt-2"
       >
-<i class="fa fa-floppy-o" aria-hidden="true"> Save</i>
+        <i class="fa fa-floppy-o" aria-hidden="true"> Save</i>
       </button>
     </form>
   </div>
 </div>
-
