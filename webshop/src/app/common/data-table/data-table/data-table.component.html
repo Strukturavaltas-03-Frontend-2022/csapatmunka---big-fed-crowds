@@ -1,27 +1,43 @@
-
 <div class="container row">
   <div class="col-12">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-responsive">
       <thead>
         <tr>
           <th
             (click)="startSort(column.key)"
-            *ngFor="let column of columns " class="col_head"
+            *ngFor="let column of columns"
+            class="col_head"
           >
             <i
               *ngIf="column.key === sortKey && sortDirection === -1"
               class="fa fa-sort-amount-desc"
             ></i>
             <i
-            *ngIf="column.key === sortKey && sortDirection === 1"
-            class="fa fa-sort-amount-asc"
+              *ngIf="column.key === sortKey && sortDirection === 1"
+              class="fa fa-sort-amount-asc"
             ></i>
             {{ column.title }}
           </th>
         </tr>
+        <tr>
+          <th *ngFor="let column of columns">
+            <input
+              [(ngModel)]="filterPhrase"
+              type="text"
+              class="form-control"
+              placeholder="filter by {{ column.key }}"
+            />
+          </th>
+        </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of listers | sorter : sortKey : sortDirection | paginate: { itemsPerPage: 15, currentPage: page }">
+        <tr
+          *ngFor="
+            let row of listers
+              | sorter : sortKey : sortDirection
+              | paginate : { itemsPerPage: 15, currentPage: page }
+          "
+        >
           <td *ngFor="let column of columns" class="text-break w-25">
             {{ row[column.key] }}
           </td>
@@ -39,5 +55,8 @@
       </tbody>
     </table>
   </div>
-  <pagination-controls class="col-12 text-center" (pageChange)="page = $event"></pagination-controls>
+  <pagination-controls
+    class="col-12 text-center"
+    (pageChange)="page = $event"
+  ></pagination-controls>
 </div>
