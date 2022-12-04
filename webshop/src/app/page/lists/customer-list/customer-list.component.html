@@ -2,7 +2,7 @@
 
 <button class="btn btn-success col-12" [routerLink]="['/edit-customer', 0]"> + New Customer </button>
 
-<div class="row">
+<div class="container row">
   <div *ngIf="customerList$ | async as customerList" class="col-12">
     <app-data-table
     [listers]="customerList"

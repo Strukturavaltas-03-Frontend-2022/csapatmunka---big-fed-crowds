@@ -23,7 +23,7 @@ export class ConfigService {
     { title: 'ID', key: 'id' },
     { title: 'Name', key: 'name' },
     { title: 'Type', key: 'type' },
-    { title: 'Category ID', key: 'catId' },
+    { title: 'Category ID', key: 'catID' },
     { title: 'Description', key: 'description' },
     { title: 'Price', key: 'price' },
     { title: 'Featured', key: 'featured' },
