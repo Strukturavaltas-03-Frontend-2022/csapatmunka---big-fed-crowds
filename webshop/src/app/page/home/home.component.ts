@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/model/customer';
+import { Order } from 'src/app/model/order';
 import { Product } from 'src/app/model/product';
+import { BillService } from 'src/app/service/bill.service';
 import { CustomerService } from 'src/app/service/customer.service';
+import { OrderService } from 'src/app/service/order.service';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -15,9 +18,13 @@ export class HomeComponent implements OnInit {
 
   activeProducts: Product[] = [];
 
+  pendingOrders: Order[] = [];
+
   constructor(
     private customerService: CustomerService,
-    private productService: ProductService
+    private productService: ProductService,
+    private orderService: OrderService,
+    private billService: BillService
   ) {}
 
   ngOnInit(): void {
@@ -38,5 +45,16 @@ export class HomeComponent implements OnInit {
             (product) =>(product.active = true)
           ))
       );
+
+
+      this.orderService
+      .getAll()
+      .subscribe(
+        orders => (this.pendingOrders = orders.filter(
+          order => (order.status != 'paid')
+        ))
+      )
   }
+
+
 }
