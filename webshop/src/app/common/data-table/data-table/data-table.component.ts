@@ -16,11 +16,15 @@ export class DataTableComponent<T extends { [x: string]: any }>
 {
   @Input() listers: T[] = [];
   @Input() columns: ITableCol[] = [];
+  @Input() headers: string[] = [];
 
   sortKey: string = '';
   sortDirection: number = 1;
 
+  key: string = '';
+  phrases: string[] = [];
   filterPhrase: string = '';
+  sortHeader: string = '';
 
   page: number = 1;
 
@@ -46,4 +50,18 @@ export class DataTableComponent<T extends { [x: string]: any }>
 
     this.sortKey = key;
   }
+
+  onPhraseChange(header: string, index: number) {
+    this.key = header;
+    this.filterPhrase = this.phrases[index];
+  }
+
+  clearFilterAndSortInputs() {
+    this.filterPhrase = '';
+    this.key = '';
+    for (let i = 0; i < this.phrases.length; i++) {
+      this.phrases[i] = '';
+    }
+  }
 }
+
