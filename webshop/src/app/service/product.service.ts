@@ -19,6 +19,10 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.apiUrl}${this.entity}`);
   }
 
+  get(id: number): Observable<Product>{
+    return this.http.get<Product>(`${this.apiUrl}${this.entity}/${id}`)
+  }
+
   create(product: Product): Observable<Product> {
     return this.http.post<Product>(`${this.apiUrl}${this.entity}`, product);
   }
@@ -26,7 +30,7 @@ export class ProductService {
   update(product: Product): Observable<Product> {
     return this.http.patch<Product>(
       `${this.apiUrl}${this.entity}/${product.id}`,
-      Product
+      product
     );
   }
 

@@ -1,20 +1,20 @@
-<div class="row">
+<div class="row ms-0">
   <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover table-sm">
       <thead>
         <tr>
           <th
             (click)="startSort(column.key)"
             *ngFor="let column of columns"
-            class="col_head"
+            class="col_head lh-sm"
           >
             <i
               *ngIf="column.key === sortKey && sortDirection === -1"
-              class="fa fa-sort-amount-desc"
+              class="fa fa-sort-amount-desc lh-sm"
             ></i>
             <i
               *ngIf="column.key === sortKey && sortDirection === 1"
-              class="fa fa-sort-amount-asc"
+              class="fa fa-sort-amount-asc lh-sm"
             ></i>
             {{ column.title }}
           </th>
@@ -24,7 +24,7 @@
             <input
               [(ngModel)]="phrases[i]"
               type="text"
-              class="form-control m-auto"
+              class="form-control lh-sm"
               (keyup)="onPhraseChange(column.key, i)"
               placeholder="filter by {{ column.key }}"
             />
@@ -40,8 +40,10 @@
               | filter: key: filterPhrase
           "
         >
-          <td *ngFor="let column of columns" class="text-break">
-            {{ row[column.key] }}
+          <td *ngFor="let column of columns" class="text-truncate sormag">
+            <h5 class="lh-sm px-auto ps-1">
+              {{ row[column.key] }}
+            </h5>
           </td>
           <td>
             <div (click)="raiseEdit(row)" class="btn-group">
