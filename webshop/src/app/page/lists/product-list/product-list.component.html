@@ -3,7 +3,7 @@
 
   <h1>Products List</h1>
 
-  <button class="btn btn-success col-12" [routerLink]="['/edit-product', 0]"> + New Product </button>
+  <button class="btn btn-success col-12 shadow-success" [routerLink]="['/edit-product', 0]"> + New Product </button>
 
   <div class="row">
     <div *ngIf="productList$ | async as productList" class="col-12">
