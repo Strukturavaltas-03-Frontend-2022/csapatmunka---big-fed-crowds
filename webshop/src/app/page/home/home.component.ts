@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (customers) =>
           (this.activeCustomers = customers.filter(
-            (customer) => (customer.active = true)
+            (customer) => customer.active == true
           ))
       );
 
@@ -45,19 +45,30 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (products) =>
           (this.activeProducts = products.filter(
-            (product) =>(product.active = true)
+            (product) => product.active == true
           ))
       );
 
-
-      this.orderService
+    this.orderService
       .getAll()
       .subscribe(
-        orders => (this.pendingOrders = orders.filter(
-          order => (order.status != 'paid')
-        ))
-      )
+        (orders) =>
+          (this.pendingOrders = orders.filter(
+            (order) => order.status != 'paid'
+          ))
+      );
+
+    this.billService
+      .getAll()
+      .subscribe(
+        (bills) =>
+          (this.billList = bills.filter((bill) => bill.status == 'new'))
+      );
   }
 
-
+  getUnpaidAmount(): number {
+    let amount = 0;
+    this.billList.forEach(bill => amount += bill.amount);
+    return amount;
+  }
 }
