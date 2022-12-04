@@ -30,7 +30,7 @@
     <div class="card mb-2" style="width: 16rem;">
       <div class="card-body">
         <h5 class="card-title mb-2">Amount of not paid Bills</h5>
-        <a href="#" class="btn btn-success mt-4"> {{ getUnpaidAmount() }} $  </a>
+        <a href="#" class="btn btn-success mt-4"> {{ getUnpaidAmount() | currency:'USD'}} </a>
       </div>
     </div>
   </div>
