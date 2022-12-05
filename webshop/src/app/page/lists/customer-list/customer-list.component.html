@@ -1,8 +1,10 @@
 <h1>Customers List</h1>
 
-<button class="btn btn-success col-12" [routerLink]="['/edit-customer', 0]"> + New Customer </button>
+<button class="btn btn-success col-12" [routerLink]="['/edit-customer', 0]">
+  + New Customer
+</button>
 
-<div class="container row">
+<!--<div class="container row">
   <div *ngIf="customerList$ | async as customerList" class="col-12">
     <app-data-table
     [listers]="customerList"
@@ -12,5 +14,74 @@
       >
     </app-data-table>
   </div>
-</div>
+</div>-->
 
+<div class="row ms-0">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-sm">
+            <thead>
+        <tr>
+          <th
+            (click)="startSort(column.key)"
+            *ngFor="let column of columns"
+            class="col_head lh-sm"
+          >
+            <i
+              *ngIf="column.key === sortKey && sortDirection === -1"
+              class="fa fa-sort-amount-desc lh-sm"
+            ></i>
+            <i
+              *ngIf="column.key === sortKey && sortDirection === 1"
+              class="fa fa-sort-amount-asc lh-sm"
+            ></i>
+            {{ column.title }}
+          </th>
+        </tr>
+        <tr>
+          <th *ngFor="let column of columns; let i = index" class="m-0 p-1">
+            <input
+              [(ngModel)]="phrases[i]"
+              type="text"
+              class="form-control lh-sm"
+              (keyup)="onPhraseChange(column.key, i)"
+              placeholder="filter by {{ column.key }}"
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let column of customerList$ | async | filter : key : filterPhrase | sorter : sortKey : sortDirection
+              | paginate : { itemsPerPage: 15, currentPage: page}">
+          <td class="text-truncate">
+            {{ column.id }}
+          </td>
+          <td>{{ column.firstName }}</td>
+          <td>{{ column.lastName }}</td>
+          <td>{{ column.email }}</td>
+          <td>
+            {{ column.address.zip }}
+            {{ column.address.country }}
+            {{ column.address.city }}
+            {{ column.address.street }}
+            {{ column.address.notes }}
+            </td>
+          <td>{{ column.active }}</td>
+           <td>
+            <div (click)="onEdit(column)" class="btn-group">
+              <button class="btn btn-primary">
+                <i class="fas fa-pencil"></i>
+              </button>
+              <button (click)="onDelete(column)" class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <pagination-controls
+    class="col-12 text-center"
+    (pageChange)="page = $event"
+  ></pagination-controls>
+</div>
