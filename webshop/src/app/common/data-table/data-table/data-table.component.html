@@ -40,10 +40,8 @@
               | filter: key: filterPhrase
           "
         >
-          <td *ngFor="let column of columns" class="text-truncate sormag">
-            <h5 class="lh-sm px-auto ps-1">
+          <td *ngFor="let column of columns" class="text-truncate">
               {{ row[column.key] }}
-            </h5>
           </td>
           <td>
             <div class="btn-group">

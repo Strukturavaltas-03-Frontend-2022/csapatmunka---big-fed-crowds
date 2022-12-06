@@ -1,15 +1,5 @@
-<!-- export class Customer {
-  [x: string]: any;
-  id: number = 0;
-  fisrtName: string = '';
-  lastName: string = '';
-  email: string = '';
-  address: Address = new Address();
-  active: boolean = false;
-} -->
-
 <div class="row pt-5">
-  <div *ngIf="customer$ | async as customer" class="col-6 offset-3">
+  <div *ngIf="customer$ | async as customer" class="col-10 offset-1">
     <h1 class="mt-5 text-center">Customer Editor</h1>
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
@@ -18,123 +8,178 @@
       All category must be filled!
     </p>
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, customer)">
-      <div class="form-group mb-2 mt-2">
-        <label for="" class="mb-2">Customer ID</label>
-        <input
-          name="id"
-          [(ngModel)]="customer.id"
-          type="number"
-          class="form-control"
-          readonly
-        />
-      </div>
-      <div class="form-group mb-2">
-        <label for="" class="mb-2">Firstname</label>
-        <input
-          name="firstName"
-          [(ngModel)]="customer.firstName"
-          type="text"
-          class="form-control"
-          pattern="[A-Z].{0,50}"
-          required
-        />
-        <div
-          [hidden]="eventForm.controls['firstName']?.valid"
-          [hidden]="eventForm.controls['firstName']?.pristine"
-          class="error-message"
-        >
-          Fistname must be filled with capital letter, maximum 50 characters
-          long.
+      <div class="container col-12 row">
+        <div class="col-md-6">
+          <div class="form-group mb-2 mt-0">
+            <label for="" class="mb-2">Customer ID</label>
+            <input
+              name="id"
+              [(ngModel)]="customer.id"
+              type="number"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label for="" class="mb-2">Firstname</label>
+            <input
+              name="firstName"
+              [(ngModel)]="customer.firstName"
+              type="text"
+              class="form-control"
+              pattern="[A-Z].{0,50}"
+              required
+            />
+            <div
+              [hidden]="eventForm.controls['firstName']?.valid"
+              [hidden]="eventForm.controls['firstName']?.pristine"
+              class="error-message"
+            >
+              Fistname must be filled with capital letter, maximum 50 characters
+              long.
+            </div>
+          </div>
+          <div class="form-group mb-2">
+            <label for="" class="mb-2">Lastname</label>
+            <input
+              name="lastName"
+              [(ngModel)]="customer.lastName"
+              type="text"
+              class="form-control"
+              pattern="[A-Z].{0,50}"
+              required
+            />
+            <div
+              [hidden]="eventForm.controls['lastName']?.valid"
+              [hidden]="eventForm.controls['lastName']?.pristine"
+              class="error-message"
+            >
+              Lastname must be filled with capital letters, maximum 50
+              characters long.
+            </div>
+          </div>
+          <div class="form-group mb-2">
+            <label for="" class="mb-2">Email</label>
+            <input
+              name="email"
+              [(ngModel)]="customer.email"
+              type="text"
+              class="form-control"
+              pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b"
+              required
+            />
+            <div
+              [hidden]="eventForm.controls['email']?.valid"
+              [hidden]="eventForm.controls['email']?.pristine"
+              class="error-message"
+            >
+              Email address must be added!
+            </div>
+          </div>
+          <div class="form-check my-3">
+            <label for="" class="form-check-label m-2">Active</label>
+            <input
+              name="active"
+              [(ngModel)]="customer.active"
+              type="checkbox"
+              class="form-check-input m-2"
+            />
+          </div>
         </div>
-      </div>
-      <div class="form-group mb-2">
-        <label for="" class="mb-2">Lastname</label>
-        <input
-          name="lastName"
-          [(ngModel)]="customer.lastName"
-          type="text"
-          class="form-control"
-          pattern="[A-Z].{0,50}"
-          required
-        />
-        <div
-          [hidden]="eventForm.controls['lastName']?.valid"
-          [hidden]="eventForm.controls['lastName']?.pristine"
-          class="error-message"
-        >
-          Lastname must be filled with capital letters, maximum 50 characters
-          long.
-        </div>
-      </div>
-      <div class="form-group mb-2">
-        <label for="" class="mb-2">Email</label>
-        <input
-          name="email"
-          [(ngModel)]="customer.email"
-          type="text"
-          class="form-control"
-          pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b"
-          required
-        />
-        <div
-          [hidden]="eventForm.controls['email']?.valid"
-          [hidden]="eventForm.controls['email']?.pristine"
-          class="error-message"
-        >
-          Email address must be added!
-        </div>
-      </div>
-      <div class="form-group mb-3">
-        <label for="" class="mb-2">Address</label>
-        <input
-          name="address"
-          [(ngModel)]="customer.address"
-          type="text"
-          class="form-control"
-          pattern=""
-          required
-        />
-        <div
-          [hidden]="eventForm.controls['address']?.valid"
-          [hidden]="eventForm.controls['address']?.pristine"
-          class="error-message"
-        >
-          Address must be filled with capital letters, maximum 3 nametag.
-        </div>
-      </div>
-      <!-- <div class="form-group mb-2">
-        <label for="" class="mb-2">Active</label>
-        <select
-          name="active"
-          [(ngModel)]="customer.active"
-          type="select"
-          class="form-select"
-          required
-        >
-          <option selected>{{customer.active}}</option>
-          <option value="true">true</option>
-          <option value="false">false</option>
-        </select>
-      </div> -->
 
-      <div class="form-check mb-2">
-        <label for="" class="form-check-label me-2">Active</label>
-        <input
-          name="active"
-          [(ngModel)]="customer.active"
-          type="checkbox"
-          class="form-check-input"
-        />
-      </div>
+        <div class="col-md-6">
+          <div class="form-group mb-2 mt-0">
+              <div class="form-group mb-2 mt-0">
+                <div class="row ps-auto ms-auto mt-0 add">
+                  <label for="" class="d-flex justify-content-start col-6 ps-0"
+                  >Address:</label
+                  >
+                  <label for="address.zip" class="d-flex justify-content-end col-5"
+                  >ZIP Code</label
+                  >
+                </div>
+                <input
+                  name="address.zip"
+                  [(ngModel)]="customer.address.zip"
+                  type="text"
+                  class="form-control"
+                  pattern=""
+                  required
+                  />
+                </div>
 
-      <button
-        (click)="showToaster()"
-        [disabled]="eventForm.invalid"
-        type="submit"
-        class="btn btn-secondary btn-lg mt-2"
-      >
-        <i class="fa fa-floppy-o" aria-hidden="true"> Save</i>
-      </button>
-    </form>
+                <div class="form-group mb-2">
+                  <label for="address.country" class="mb-2 d-flex justify-content-end pe-3"
+                  >Country</label
+                  >
+                  <input
+                  name="address.country"
+                  [(ngModel)]="customer.address.country"
+                  type="text"
+                  class="form-control"
+                  pattern=""
+                  required
+                  />
+                </div>
+                <div class="form-group mb-2">
+                  <label for="address.city" class="mb-3 d-flex justify-content-end pe-3"
+                  >City</label
+                  >
+                  <input
+                  name="address.city"
+                  [(ngModel)]="customer.address.city"
+                  type="text"
+                  class="form-control"
+                  pattern=""
+                  required
+                  />
+                </div>
+                <div class="form-group mb-2">
+                  <label for="address.street" class="mb-2 d-flex justify-content-end pe-3"
+                  >Street</label
+                  >
+                  <input
+                  name="address.street"
+                  [(ngModel)]="customer.address.street"
+                  type="text"
+                  class="form-control"
+                  pattern=""
+                  required
+                  />
+                </div>
+                <div class="form-group mb-2">
+                  <label for="address.notes" class="mb-2 d-flex justify-content-end pe-3"
+                  >Nr.</label
+                  >
+                  <input
+                  name="address.notes"
+                  [(ngModel)]="customer.address.notes"
+                  type="text"
+                  class="form-control"
+                  pattern=""
+                  required
+                  />
+                  <div
+                  [hidden]="eventForm.controls['address']?.valid"
+                  [hidden]="eventForm.controls['address']?.pristine"
+                  class="error-message"
+                  >
+                  Address must be filled with capital letters, maximum 3
+                  nametag.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          (click)="showToaster()"
+          [disabled]="eventForm.invalid"
+          type="submit"
+          class="btn form-control btn-warning btn-lg mt-2 mx-auto px-auto"
+        >
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+        </button>
+      </form>
+    </div>
   </div>
-</div>

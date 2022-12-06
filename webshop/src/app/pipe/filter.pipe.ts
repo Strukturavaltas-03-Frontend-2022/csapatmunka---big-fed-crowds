@@ -24,8 +24,8 @@ export class FilterPipe<T extends { [x: string]: any }>
       return this.keyChange(list, key, phrase, 'category');
     }
 
-    if (key.includes('add')) {
-      return this.keyChange(list, key, phrase, 'address');
+    if (key.includes('address')) {
+      return this.keyChange(list, key, phrase, 'add');
     }
 
     return list.filter((item) => {
