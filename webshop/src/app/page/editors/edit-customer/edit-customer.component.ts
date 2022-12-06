@@ -9,15 +9,20 @@ import { CustomerService } from 'src/app/service/customer.service';
 @Component({
   selector: 'app-edit-customer',
   templateUrl: './edit-customer.component.html',
-  styleUrls: ['./edit-customer.component.scss']
+  styleUrls: ['./edit-customer.component.scss'],
 })
 export class EditCustomerComponent {
-
   customer$: Observable<Customer> = this.activatedRoute.params.pipe(
     switchMap((params) =>
-     params['id'] != 0 ? this.customerService.get(params['id']) : of(new Customer())
-    ),
+      params['id'] != 0
+        ? this.customerService.get(params['id'])
+        : of(new Customer())
+    )
   );
+
+  phrases: string[] = [];
+  phrase: string = '';
+  key: string = 'add';
 
   customer: Customer = new Customer();
 
@@ -41,10 +46,11 @@ export class EditCustomerComponent {
       .subscribe((customer) => this.router.navigate(['/customers']));
   }
 
-  showToaster(){
-    this.toastr.success('Successfully saved!')
-    }
+
+  showToaster() {
+    this.toastr.success('Successfully saved!');
   }
+}
 
 
 
