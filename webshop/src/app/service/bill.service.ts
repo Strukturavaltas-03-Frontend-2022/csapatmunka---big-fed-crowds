@@ -18,6 +18,10 @@ export class BillService {
     return this.http.get<Bill[]>(`${this.apiUrl}${this.entity}`)
   }
 
+  get(id: number): Observable<Bill>{
+    return this.http.get<Bill>(`${this.apiUrl}${this.entity}/${id}`)
+  }
+
  create(bill: Bill): Observable<Bill>{
     return this.http.post<Bill>(
     `${this.apiUrl}${this.entity}`,
