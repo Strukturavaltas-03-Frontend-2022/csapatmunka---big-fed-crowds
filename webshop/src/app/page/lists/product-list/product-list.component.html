@@ -1,11 +1,11 @@
 
-<div class="me-auto main">
+<div >
 
-  <h1>Products List</h1>
+  <h1 class="col-3 p-4">Products List</h1>
 
-  <button class="btn btn-success col-12 shadow-success" [routerLink]="['/edit-product', 0]"> + New Product </button>
+  <button class="btn bg-gradient-success col-12 shadow-success" [routerLink]="['/edit-product', 0]"> + New Product </button>
 
-  <div class="container row">
+  <div class="row me-3">
     <div *ngIf="productList$ | async as productList" class="col-12">
       <app-data-table
       [listers]="productList"
