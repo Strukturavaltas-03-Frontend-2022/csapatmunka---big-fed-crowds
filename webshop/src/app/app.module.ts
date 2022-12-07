@@ -24,7 +24,6 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTableComponent } from './common/data-table/data-table/data-table.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -53,8 +52,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ReactiveFormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    NgApexchartsModule
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
