@@ -1,8 +1,8 @@
-<h1>Bills List</h1>
+<h1 class="bg-secondary text-light col-3 p-4 rounded mb-4 box-shadow">Bills List</h1>
 
-<button class="btn btn-success col-12" [routerLink]="['/edit-bill', 0]"> + New Bill </button>
+<button class="me-3 btn btn-success col-12" [routerLink]="['/edit-bill', 0]"> + New Bill </button>
 
-<div class="row">
+<div class="me-3 row">
   <div *ngIf="billList$ | async as billList" class="col-12">
     <app-data-table
     [listers]="billList"
