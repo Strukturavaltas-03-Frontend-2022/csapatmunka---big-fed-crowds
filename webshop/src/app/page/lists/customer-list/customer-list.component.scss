@@ -4,3 +4,9 @@
 h1 {
   font-family: 'Montserrat', sans-serif;
 }
+
+.col_head {
+  cursor: pointer;
+  &:hover {background-color: rgb(217, 212, 212);}
+}
+
