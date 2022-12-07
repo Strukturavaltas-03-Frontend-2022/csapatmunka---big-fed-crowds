@@ -93,6 +93,17 @@ export class HomeComponent implements OnInit {
             }
               );
 
+              this.billService
+              .getAll()
+              .subscribe(
+                (bills) =>{
+                  (this.billList = bills.filter(
+                    (bill) => bill.status == 'paid' || bill.status == 'new'
+                  ));
+                  this.getBillStatus();
+                }
+                  );
+
     this.billService
       .getAll()
       .subscribe(
@@ -135,5 +146,36 @@ export class HomeComponent implements OnInit {
     let chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
   }
+
+  getBillStatus(): void {
+    let options = {
+      series: [
+        this.billList.filter(bill => bill.status === 'paid').length,
+        this.billList.filter(bill => bill.status === 'new').length,
+
+      ],
+      chart: {
+        width: 420,
+        type: 'pie',
+    },
+    labels: ['Paid bills', 'New bills'],
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 200
+        },
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
+    };
+
+    let chart = new ApexCharts(document.querySelector("#bill"), options);
+    chart.render();
+  }
 }
+
+
 
