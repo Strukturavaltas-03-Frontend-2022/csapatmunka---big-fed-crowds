@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,7 +53,8 @@ import { DataTableComponent } from './common/data-table/data-table/data-table.co
     ReactiveFormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

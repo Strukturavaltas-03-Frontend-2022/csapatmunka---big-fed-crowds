@@ -39,7 +39,8 @@
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js","node_modules/bootstrap/js/src/util/scrollbar.js"
+          ]
           },
           "configurations": {
             "production": {
