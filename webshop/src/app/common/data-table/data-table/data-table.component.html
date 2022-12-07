@@ -36,7 +36,7 @@
           *ngFor="
             let row of listers
               | sorter : sortKey : sortDirection
-              | paginate : { itemsPerPage: 15, currentPage: page }
+              | paginate : { itemsPerPage: 10, currentPage: page }
               | filter: key: filterPhrase
           "
         >
