@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -11,8 +11,10 @@ import { OrderService } from 'src/app/service/order.service';
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss'],
 })
-export class OrderListComponent {
+export class OrderListComponent implements OnInit{
   orderList$: Observable<Order[]> = this.orderService.getAll();
+
+  orders: Order[] = [];
 
   columns = this.configService.orderTableColumns;
 
@@ -22,6 +24,11 @@ export class OrderListComponent {
     private toastr: ToastrService,
     private router: Router,
   ) {}
+
+  ngOnInit(): void {
+    this.orderList$
+    .subscribe(orders => this.orders = orders);
+  }
 
   onEdit(order: Order):void {
    this.router.navigate(['/edit-order', order.id])

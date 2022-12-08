@@ -1,3 +1,15 @@
+<div *ngIf="bills.length == 0" class="text-center mt-5">
+  <div class="spinner-border text-success me-2" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-border text-success me-2" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
 <h1 class="col-3 p-4">Bills List</h1>
 
 <button class="me-3 btn bg-gradient-success col-12 shadow-success" [routerLink]="['/edit-bill', 0]"> + New Bill </button>
