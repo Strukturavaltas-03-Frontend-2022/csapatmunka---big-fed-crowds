@@ -4,8 +4,8 @@
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
 
-    <p [hidden]="eventForm.pristine" style="color: red">
-      All category must be filled!
+    <p [hidden]="eventForm.valid" style="color: red">
+      All category must be filled and valid!
     </p>
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, product)">
       <div class="form-group mb-2 mt-2">
@@ -25,15 +25,16 @@
           [(ngModel)]="product.name"
           type="text"
           class="form-control"
-          pattern="[A-Z].{3,100}"
+          pattern="[A-Za-z].{2,50}"
           required
         />
         <div
           [hidden]="eventForm.controls['name']?.valid"
-          [hidden]="eventForm.controls['name']?.pristine"
+          [hidden]="eventForm.controls['name']?.untouched"
+
           class="error-message"
         >
-          Name must be between 3-50 characters.
+          Name is required & must be between 3-50 characters.
         </div>
       </div>
       <div class="form-group mb-2">
@@ -43,16 +44,16 @@
           [(ngModel)]="product.type"
           type="text"
           class="form-control"
-          pattern="[A-Z].{0,1000}"
+          pattern="[A-Za-z].{2,50}"
           required
         />
         <div
           [hidden]="eventForm.controls['type']?.valid"
-          [hidden]="eventForm.controls['type'].pristine"
+          [hidden]="eventForm.controls['type']?.untouched"
+
           class="error-message"
         >
-          Lastname must be filled with capital letters, maximum 50 characters
-          long.
+          Type is required & must be between 3-50 characters.
         </div>
       </div>
       <div class="form-group mb-2">
@@ -62,15 +63,15 @@
           [(ngModel)]="product.catID"
           type="number"
           class="form-control"
-          pattern="{0,4}"
+          pattern="[0-9]{0,4}"
           required
         />
         <div
           [hidden]="eventForm.controls['catID']?.valid"
-          [hidden]="eventForm.controls['catID']?.pristine"
+          [hidden]="eventForm.controls['catID']?.untouched"
           class="error-message"
         >
-          CatID must be added!
+          CatID is required must be between 1-4 numbers!
         </div>
       </div>
       <div class="form-group mb-2">
@@ -80,15 +81,16 @@
           [(ngModel)]="product.description"
           type="text"
           class="form-control"
-          pattern="{0,4}"
+           pattern="[A-Za-z].{2,50}"
           required
         />
         <div
           [hidden]="eventForm.controls['description']?.valid"
-          [hidden]="eventForm.controls['description']?.pristine"
+          [hidden]="eventForm.controls['description']?.untouched"
+
           class="error-message"
         >
-          Description required!
+          Description required & must be between 3-50 characters.
         </div>
       </div>
       <div class="form-group mb-2">
@@ -98,15 +100,15 @@
           [(ngModel)]="product.price"
           type="bumber"
           class="form-control"
-
+          pattern="[0-9]{0,4}"
           required
         />
         <div
           [hidden]="eventForm.controls['price']?.valid"
-          [hidden]="eventForm.controls['price']?.pristine"
+          [hidden]="eventForm.controls['price']?.untouched"
           class="error-message"
         >
-          Price!
+          Price is required & must be between 0-9999!
         </div>
       </div>
       <div class="row">

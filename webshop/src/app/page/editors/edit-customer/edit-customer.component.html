@@ -4,8 +4,8 @@
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
 
-    <p [hidden]="eventForm.pristine" style="color: red">
-      All category must be filled!
+    <p [hidden]="eventForm.valid" style="color: red">
+      All category must be filled and valid!
     </p>
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, customer)">
       <div class="container col-12 row">
@@ -27,16 +27,15 @@
               [(ngModel)]="customer.firstName"
               type="text"
               class="form-control"
-              pattern="[A-Z].{0,50}"
+              pattern="[A-Za-y].{1,50}"
               required
             />
             <div
               [hidden]="eventForm.controls['firstName']?.valid"
-              [hidden]="eventForm.controls['firstName']?.pristine"
+              [hidden]="eventForm.controls['firstName']?.untouched"
               class="error-message"
             >
-              Fistname must be filled with capital letter, maximum 50 characters
-              long.
+              Fistname is required and must be between 1-50 characters.
             </div>
           </div>
           <div class="form-group mb-2">
@@ -46,16 +45,15 @@
               [(ngModel)]="customer.lastName"
               type="text"
               class="form-control"
-              pattern="[A-Z].{0,50}"
+              pattern="[A-Za-y].{1,50}"
               required
             />
             <div
               [hidden]="eventForm.controls['lastName']?.valid"
-              [hidden]="eventForm.controls['lastName']?.pristine"
+              [hidden]="eventForm.controls['lastName']?.untouched"
               class="error-message"
             >
-              Lastname must be filled with capital letters, maximum 50
-              characters long.
+              Lastname is required and must be between 1-50 characters.
             </div>
           </div>
           <div class="form-group mb-2">
@@ -63,17 +61,17 @@
             <input
               name="email"
               [(ngModel)]="customer.email"
-              type="text"
+              type="email"
               class="form-control"
               pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b"
               required
             />
             <div
               [hidden]="eventForm.controls['email']?.valid"
-              [hidden]="eventForm.controls['email']?.pristine"
+              [hidden]="eventForm.controls['email']?.untouched"
               class="error-message"
             >
-              Email address must be added!
+              Email is required and must be valid!
             </div>
           </div>
           <div class="form-check my-3">
@@ -103,9 +101,16 @@
                   [(ngModel)]="customer.address.zip"
                   type="text"
                   class="form-control"
-                  pattern=""
+                  pattern="[0-9].{1,9}"
                   required
                   />
+                              <div
+              [hidden]="eventForm.controls['address.zip']?.valid"
+              [hidden]="eventForm.controls['address.zip']?.untouched"
+              class="error-message"
+            >
+              ZIP coderequired and must be valid!
+            </div>
                 </div>
 
                 <div class="form-group mb-2">
@@ -117,9 +122,16 @@
                   [(ngModel)]="customer.address.country"
                   type="text"
                   class="form-control"
-                  pattern=""
+                  pattern="[A-Za-y].{1,50}"
                   required
                   />
+                        <div
+              [hidden]="eventForm.controls['address.country']?.valid"
+              [hidden]="eventForm.controls['address.country']?.untouched"
+              class="error-message"
+            >
+             Country is required and must be between 1-50 characters.
+            </div>
                 </div>
                 <div class="form-group mb-2">
                   <label for="address.city" class="mb-3 d-flex justify-content-end pe-3"
@@ -130,9 +142,16 @@
                   [(ngModel)]="customer.address.city"
                   type="text"
                   class="form-control"
-                  pattern=""
+                  pattern="[A-Za-y].{1,50}"
                   required
                   />
+                        <div
+              [hidden]="eventForm.controls['address.city']?.valid"
+              [hidden]="eventForm.controls['address.city']?.untouched"
+              class="error-message"
+            >
+              City is required and must be between 1-50 characters.
+            </div>
                 </div>
                 <div class="form-group mb-2">
                   <label for="address.street" class="mb-2 d-flex justify-content-end pe-3"
@@ -143,9 +162,16 @@
                   [(ngModel)]="customer.address.street"
                   type="text"
                   class="form-control"
-                  pattern=""
+                  pattern="[A-Za-y].{1,50}"
                   required
                   />
+                        <div
+              [hidden]="eventForm.controls['address.street']?.valid"
+              [hidden]="eventForm.controls['address.street']?.untouched"
+              class="error-message"
+            >
+              Streetname is required and must be between 1-50 characters.
+            </div>
                 </div>
                 <div class="form-group mb-2">
                   <label for="address.notes" class="mb-2 d-flex justify-content-end pe-3"
@@ -156,16 +182,15 @@
                   [(ngModel)]="customer.address.notes"
                   type="text"
                   class="form-control"
-                  pattern=""
+                  pattern="[0-9].{1,9}"
                   required
                   />
                   <div
-                  [hidden]="eventForm.controls['address']?.valid"
-                  [hidden]="eventForm.controls['address']?.pristine"
+                  [hidden]="eventForm.controls['address.notes']?.valid"
+                  [hidden]="eventForm.controls['address.notes']?.untouched"
                   class="error-message"
                   >
-                  Address must be filled with capital letters, maximum 3
-                  nametag.
+                  Address notes is required and must be valid!
                 </div>
               </div>
             </div>
