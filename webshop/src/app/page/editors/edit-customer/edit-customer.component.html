@@ -45,7 +45,7 @@
               [(ngModel)]="customer.lastName"
               type="text"
               class="form-control"
-              pattern="[A-Za-y].{1,50}"
+              pattern="/[A-Za-z]{1,50}/"
               required
             />
             <div
@@ -63,7 +63,7 @@
               [(ngModel)]="customer.email"
               type="email"
               class="form-control"
-              pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b"
+              pattern="/^[\w\.-]+@[\w\.-]+\.\w{2,4}$/"
               required
             />
             <div
