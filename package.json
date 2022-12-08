@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "apexcharts": "^3.36.3",
     "bootstrap": "^5.2.3",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "ng-apexcharts": "^1.7.4"
   }
 }
