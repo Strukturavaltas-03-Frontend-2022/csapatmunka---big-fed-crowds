@@ -54,6 +54,15 @@
             </div>
           </td>
         </tr>
+        <tr class="table__tr--sum">
+          <td>Total: {{ listers.length }} pieces</td>
+          <td>{{ '' }}</td>
+          <td>{{ '' }}</td>
+          <td>{{ listers | tableColSum:'amount' | currency: 'USD' }}</td>
+          <td>{{ '' }}</td>
+          <td>{{ listers | tableColSum:'price' | currency: 'USD' }}</td>
+          <td>{{ '' }}</td>
+      </tr>
       </tbody>
     </table>
   </div>

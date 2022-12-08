@@ -25,6 +25,7 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTableComponent } from './common/data-table/data-table/data-table.component';
+import { TableColSumPipe } from './pipe/table-col-sum.pipe';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DataTableComponent } from './common/data-table/data-table/data-table.co
     EditBillComponent,
     FilterPipe,
     SorterPipe,
-    DataTableComponent
+    DataTableComponent,
+    TableColSumPipe
   ],
   imports: [
     BrowserModule,
