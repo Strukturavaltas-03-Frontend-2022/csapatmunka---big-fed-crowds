@@ -20,6 +20,8 @@ export class CustomerListComponent<T extends { [x: string]: any }>
 
   columns = this.configService.customerTableColumns;
 
+  customers: Customer[] = [];
+
   sortKey: string = '';
   sortDirection: number = 1;
 
@@ -48,7 +50,10 @@ export class CustomerListComponent<T extends { [x: string]: any }>
     this.toastr.warning('Customer is deleted!', 'WARNING!');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.customerList$
+    .subscribe(customers => this.customers = customers);
+  }
 
 
   startSort(key: string): void {

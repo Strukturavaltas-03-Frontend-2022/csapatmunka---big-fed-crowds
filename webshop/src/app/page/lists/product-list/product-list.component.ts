@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { Observable } from 'rxjs';
@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
   productList$: Observable<Product[]> = this.productService.getAll();
 
   columns = this.configService.productTableColumns;
+
+  products: Product[] = [];
 
   constructor(
     private productService: ProductService,
@@ -23,6 +25,11 @@ export class ProductListComponent {
     private toastr: ToastrService,
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+    this.productList$
+    .subscribe(products => this.products = products);
+  }
 
   //productList$ = combineLatest({
   //  cat: this.categoryService.getAll(),
