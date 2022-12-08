@@ -33,8 +33,8 @@ export class ConfigService {
   billTableColumns: ITableColumn[] = [
     { title: 'ID', key: 'id' },
     { title: 'Order ID', key: 'orderID' },
-    { title: 'Amount', key: 'amount' },
     { title: 'Status', key: 'status' },
+    { title: 'Amount', key: 'amount' },
   ];
 
   orderTableColumns: ITableColumn[] = [
