@@ -13,8 +13,8 @@ export class Bill {
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
 
-    <p [hidden]="eventForm.pristine" style="color: red">
-      All category must be filled!
+    <p [hidden]="eventForm.valid" style="color: red">
+      All category must be filled and valid!
     </p>
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, bill)">
       <div class="form-group mb-2 mt-2">
@@ -39,7 +39,7 @@ export class Bill {
         />
         <div
           [hidden]="eventForm.controls['orderID']?.valid"
-          [hidden]="eventForm.controls['orderID']?.pristine"
+
           class="error-message"
         >
         OrderID must be filled with numbers, maximum 5 characters
@@ -53,12 +53,12 @@ export class Bill {
           [(ngModel)]="bill.amount"
           type="number"
           class="form-control"
-          pattern="[0-9].{0,20}"
+          pattern="[0-9].{1,20}"
           required
         />
         <div
           [hidden]="eventForm.controls['amount']?.valid"
-          [hidden]="eventForm.controls['amount']?.pristine"
+
           class="error-message"
         >
         Amount must be filled with numbers, maximum 20 characters
