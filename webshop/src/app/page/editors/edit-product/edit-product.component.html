@@ -30,7 +30,7 @@
         />
         <div
           [hidden]="eventForm.controls['name']?.valid"
-          [hidden]="eventForm.controls['name']?.untouched"
+          [hidden]="eventForm.controls['name']?.pristine"
 
           class="error-message"
         >
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="form-group mb-2">
-        <label for="type" class="mb-2">Type</label>
+        <label for="" class="mb-2">Type</label>
         <input
           name="type"
           [(ngModel)]="product.type"
@@ -49,7 +49,7 @@
         />
         <div
           [hidden]="eventForm.controls['type']?.valid"
-          [hidden]="eventForm.controls['type']?.untouched"
+          [hidden]="eventForm.controls['type']?.pristine"
 
           class="error-message"
         >
@@ -61,14 +61,14 @@
         <input
           name="catID"
           [(ngModel)]="product.catID"
-          type="number"
+          type="text"
           class="form-control"
-          pattern="[0-9]{0,4}"
+          pattern="[0-9].{0,3}"
           required
         />
         <div
           [hidden]="eventForm.controls['catID']?.valid"
-          [hidden]="eventForm.controls['catID']?.untouched"
+          [hidden]="eventForm.controls['catID']?.pristine"
           class="error-message"
         >
           CatID is required must be between 1-4 numbers!
@@ -81,12 +81,12 @@
           [(ngModel)]="product.description"
           type="text"
           class="form-control"
-           pattern="[A-Za-z].{2,50}"
+          pattern="[A-Za-z].{2,50}"
           required
         />
         <div
           [hidden]="eventForm.controls['description']?.valid"
-          [hidden]="eventForm.controls['description']?.untouched"
+          [hidden]="eventForm.controls['description']?.pristine"
 
           class="error-message"
         >
@@ -98,9 +98,9 @@
         <input
           name="price"
           [(ngModel)]="product.price"
-          type="bumber"
+          type="text"
           class="form-control"
-          pattern="[0-9]{0,4}"
+          pattern="[0-9].{0,3}"
           required
         />
         <div

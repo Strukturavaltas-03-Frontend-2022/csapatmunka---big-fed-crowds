@@ -34,11 +34,12 @@ export class Bill {
           [(ngModel)]="bill.orderID"
           type="number"
           class="form-control"
-          pattern="[0-9].{0,5}"
+          pattern="[0-9].{1,4}"
           required
         />
         <div
           [hidden]="eventForm.controls['orderID']?.valid"
+          [hidden]="eventForm.controls['orderID']?.pristine"
 
           class="error-message"
         >
@@ -58,6 +59,7 @@ export class Bill {
         />
         <div
           [hidden]="eventForm.controls['amount']?.valid"
+          [hidden]="eventForm.controls['amount']?.pristine"
 
           class="error-message"
         >

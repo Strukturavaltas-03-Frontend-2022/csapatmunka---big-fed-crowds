@@ -40,7 +40,7 @@
         />
         <div
           [hidden]="eventForm.controls['customerID']?.valid"
-          [hidden]="eventForm.controls['customerID']?.untouched"
+          [hidden]="eventForm.controls['customerID']?.pristine"
           class="error-message"
         >
           Customer ID must be number.
@@ -58,7 +58,7 @@
         />
         <div
           [hidden]="eventForm.controls['productID']?.valid"
-          [hidden]="eventForm.controls['productID']?.untouched"
+          [hidden]="eventForm.controls['productID']?.pristine"
           class="error-message"
         >
           Product ID must be number.
@@ -76,7 +76,7 @@
         />
         <div
           [hidden]="eventForm.controls['amount']?.valid"
-          [hidden]="eventForm.controls['amount']?.untouched"
+          [hidden]="eventForm.controls['amount']?.pristine"
           class="error-message"
         >
           Amount must be number!
@@ -96,13 +96,7 @@
           <option>paid</option>
           <option>shipped</option>
         </select>
-        <div
-          [hidden]="eventForm.controls['shipped']?.valid"
-          [hidden]="eventForm.controls['shipped']?.untouched"
-          class="error-message"
-        >
-          Shipping info is required!
-        </div>
+
       </div>
       <button
         (click)="showToaster()"
