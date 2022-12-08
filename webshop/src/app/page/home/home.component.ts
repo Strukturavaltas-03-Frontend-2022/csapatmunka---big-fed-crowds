@@ -127,6 +127,7 @@ export class HomeComponent implements OnInit {
       ],
       chart: {
         width: 420,
+        height:300,
         type: 'pie',
     },
     labels: ['New orders', 'Paid orders', 'Shipped orders'],
@@ -156,6 +157,7 @@ export class HomeComponent implements OnInit {
       ],
       chart: {
         width: 420,
+        height: 300,
         type: 'pie',
     },
     labels: ['Paid bills', 'New bills'],
