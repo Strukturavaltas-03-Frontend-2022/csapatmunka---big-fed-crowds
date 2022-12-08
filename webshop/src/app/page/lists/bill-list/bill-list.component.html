@@ -1,8 +1,8 @@
 <h1 class="col-12 p-4 border-0 border-radius-xl my-3 text-secondary" style="background-color: rgb(234, 234, 234);">Bills List</h1>
 
-<button class="me-3 btn bg-gradient-success col-12 shadow-success" [routerLink]="['/edit-bill', 0]"> + New Bill </button>
+<button class="btn bg-gradient-success col-12 shadow-success" [routerLink]="['/edit-bill', 0]"> + New Bill </button>
 
-<div class="me-3 row">
+<div class="row">
   <div *ngIf="billList$ | async as billList" class="col-12">
     <app-data-table
     [listers]="billList"
